@@ -1569,7 +1569,7 @@ button {
 }
 
 .space-card-image--alt {
-  display: none;
+  display: block;
 }
 
 /* Carousel dots */
