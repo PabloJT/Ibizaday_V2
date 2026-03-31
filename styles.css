@@ -2,12 +2,12 @@
    IBIZADAY.COM — Global Styles
    Luxury Day Experiences in Ibiza
    ============================================
-   CAMBIOS vs versión original:
+   CAMBIOS vs version original:
    - FIX #1: outline:none reemplazado por focus ring accesible (WCAG AA)
              en .form-input, .form-textarea, .form-select y .newsletter-input
-   - FIX #2: Estilos de lightbox añadidos (nuevo componente)
-   - FIX #3: .gallery-item cursor:pointer añadido
-   - FIX #4: Propiedad CSS inválida `group: true` eliminada de .experience-card
+   - FIX #2: Estilos de lightbox anadidos (nuevo componente)
+   - FIX #3: .gallery-item cursor:pointer anadido
+   - FIX #4: Propiedad CSS invalida `group: true` eliminada de .experience-card
    - FIX #5: Focus visible en .btn y .gallery-item para usuarios de teclado
    - FIX #6: Fuentes custom Balgain Expanded y Text Light integradas
    ============================================ */
@@ -542,7 +542,7 @@ button {
   gap: var(--space-md);
 }
 
-/* FIX #4: eliminada propiedad CSS inválida `group: true` que no tiene efecto */
+/* FIX #4: eliminada propiedad CSS invalida `group: true` que no tiene efecto */
 .experience-card {
   position: relative;
   overflow: hidden;
@@ -826,7 +826,7 @@ button {
   color: var(--color-text);
 }
 
-/* FIX #5: focus en botón newsletter */
+/* FIX #5: focus en boton newsletter */
 .newsletter-submit:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
@@ -1271,7 +1271,7 @@ button {
 
 /* ============================================
    LIGHTBOX (nuevo componente)
-   FIX #6: Galería sin lightbox era un hueco de UX.
+   FIX #6: Galeria sin lightbox era un hueco de UX.
    ============================================ */
 .lightbox {
   position: fixed;

@@ -2,8 +2,8 @@
    IBIZADAY.COM — main.js
    Unificado desde inline scripts individuales.
    Correcciones aplicadas:
-   - Bug #1: aria-label del menú toggle faltaba en páginas internas
-   - Bug #2: Lightbox añadido (solo activo en galería)
+   - Bug #1: aria-label del menu toggle faltaba en paginas internas
+   - Bug #2: Lightbox anadido (solo activo en galeria)
    ============================================ */
 
 /* --- Scroll Reveal (Intersection Observer) --- */
@@ -42,9 +42,9 @@
   }, { passive: true });
 }());
 
-/* --- Menú móvil ---
-   FIX: aria-label dinámico (Abrir/Cerrar) estaba ausente en páginas internas.
-   Se centraliza aquí para todas las páginas. */
+/* --- Menu movil ---
+   FIX: aria-label dinamico (Abrir/Cerrar) estaba ausente en paginas internas.
+   Se centraliza aqui para todas las paginas. */
 (function () {
   var toggle = document.querySelector('.menu-toggle');
   var navWrapper = document.querySelector('.nav-wrapper');
@@ -54,7 +54,7 @@
     var isOpen = navWrapper.classList.toggle('is-open');
     toggle.classList.toggle('is-open');
     toggle.setAttribute('aria-expanded', isOpen);
-    toggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+    toggle.setAttribute('aria-label', isOpen ? 'Cerrar menu' : 'Abrir menu');
     document.body.style.overflow = isOpen ? 'hidden' : '';
   });
 
@@ -63,14 +63,14 @@
       navWrapper.classList.remove('is-open');
       toggle.classList.remove('is-open');
       toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', 'Abrir menú');
+      toggle.setAttribute('aria-label', 'Abrir menu');
       document.body.style.overflow = '';
     });
   });
 }());
 
-/* --- Lightbox (activo solo si hay .gallery-item en la página) ---
-   NUEVO: Galería sin lightbox era un hueco de UX notable. */
+/* --- Lightbox (activo solo si hay .gallery-item en la pagina) ---
+   NUEVO: Galeria sin lightbox era un hueco de UX notable. */
 (function () {
   var galleryItems = document.querySelectorAll('.gallery-item');
   if (!galleryItems.length) return;
@@ -223,7 +223,7 @@
   });
 }());
 
-/* --- Catalog Tabs (activo solo si hay .catalog-tab en la página) --- */
+/* --- Catalog Tabs (activo solo si hay .catalog-tab en la pagina) --- */
 (function () {
   var tabs = document.querySelectorAll('.catalog-tab');
   var panels = document.querySelectorAll('.catalog-panel');
