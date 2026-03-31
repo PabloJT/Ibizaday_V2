@@ -1553,15 +1553,83 @@ button {
   overflow: hidden;
 }
 
-.space-card-image {
+/* Carousel */
+.space-card-gallery {
+  display: flex;
   width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  transition: transform 0.6s var(--ease-out);
+  overflow: hidden;
 }
 
-.space-card:hover .space-card-image {
-  transform: scale(1.03);
+.space-card-image {
+  width: 100%;
+  flex: 0 0 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease-out);
+}
+
+.space-card-image--alt {
+  display: none;
+}
+
+/* Carousel dots */
+.space-card-dots {
+  position: absolute;
+  bottom: 0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.35rem;
+  z-index: 2;
+}
+
+.space-card-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background var(--transition-base);
+}
+
+.space-card-dot.is-active {
+  background: var(--color-white);
+}
+
+/* Carousel arrows */
+.space-card-prev,
+.space-card-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  background: rgba(255,255,255,0.85);
+  border: none;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--transition-base), background var(--transition-base);
+}
+
+.space-card-prev { left: 0.5rem; }
+.space-card-next { right: 0.5rem; }
+
+.space-card-image-wrap:hover .space-card-prev,
+.space-card-image-wrap:hover .space-card-next {
+  opacity: 1;
+}
+
+.space-card-prev:hover,
+.space-card-next:hover {
+  background: var(--color-white);
 }
 
 .space-card-type {
