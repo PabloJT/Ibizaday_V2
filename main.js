@@ -161,19 +161,11 @@
     var images = Array.from(gallery.querySelectorAll('.space-card-image'));
     if (images.length < 2) return;
 
-    var n = images.length;
     var current = 0;
 
-    /* Set gallery width to total of all slides */
-    gallery.style.display = 'flex';
-    gallery.style.width = (n * 100) + '%';
-    gallery.style.transition = 'transform 0.45s cubic-bezier(0.16,1,0.3,1)';
-    gallery.style.willChange = 'transform';
-
-    /* Each image takes 1/n of the gallery width = 100% of the visible container */
-    images.forEach(function (img) {
-      img.style.width = (100 / n) + '%';
-      img.style.flexShrink = '0';
+    /* Hide all except first */
+    images.forEach(function (img, i) {
+      img.style.display = i === 0 ? 'block' : 'none';
     });
 
     /* Create prev/next buttons */
@@ -206,8 +198,9 @@
     wrap.appendChild(dotsWrap);
 
     function goTo(index) {
-      current = (index + n) % n;
-      gallery.style.transform = 'translateX(-' + (current * (100 / n)) + '%)';
+      images[current].style.display = 'none';
+      current = (index + images.length) % images.length;
+      images[current].style.display = 'block';
       dotsWrap.querySelectorAll('.space-card-dot').forEach(function (d, i) {
         d.classList.toggle('is-active', i === current);
       });
@@ -218,8 +211,8 @@
 
     /* Touch/swipe support */
     var startX = 0;
-    gallery.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
-    gallery.addEventListener('touchend', function (e) {
+    wrap.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+    wrap.addEventListener('touchend', function (e) {
       var diff = startX - e.changedTouches[0].clientX;
       if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
     });
