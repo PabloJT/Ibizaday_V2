@@ -161,13 +161,20 @@
     var images = Array.from(gallery.querySelectorAll('.space-card-image'));
     if (images.length < 2) return;
 
-    /* Show all images in flex row */
+    var n = images.length;
+    var current = 0;
+
+    /* Set gallery width to total of all slides */
+    gallery.style.display = 'flex';
+    gallery.style.width = (n * 100) + '%';
+    gallery.style.transition = 'transform 0.45s cubic-bezier(0.16,1,0.3,1)';
+    gallery.style.willChange = 'transform';
+
+    /* Each image takes 1/n of the gallery width = 100% of the visible container */
     images.forEach(function (img) {
-      img.style.minWidth = '100%';
+      img.style.width = (100 / n) + '%';
       img.style.flexShrink = '0';
     });
-
-    var current = 0;
 
     /* Create prev/next buttons */
     var prev = document.createElement('button');
@@ -199,18 +206,12 @@
     wrap.appendChild(dotsWrap);
 
     function goTo(index) {
-      current = (index + images.length) % images.length;
-      gallery.style.transform = 'translateX(-' + (current * 100) + '%)';
+      current = (index + n) % n;
+      gallery.style.transform = 'translateX(-' + (current * (100 / n)) + '%)';
       dotsWrap.querySelectorAll('.space-card-dot').forEach(function (d, i) {
         d.classList.toggle('is-active', i === current);
       });
     }
-
-    /* Make gallery a sliding track */
-    gallery.style.display = 'flex';
-    gallery.style.width = '100%';
-    gallery.style.transition = 'transform 0.45s cubic-bezier(0.16,1,0.3,1)';
-    gallery.style.willChange = 'transform';
 
     prev.addEventListener('click', function (e) { e.stopPropagation(); goTo(current - 1); });
     next.addEventListener('click', function (e) { e.stopPropagation(); goTo(current + 1); });
