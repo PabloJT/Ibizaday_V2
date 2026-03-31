@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- FIX: eliminado meta http-equiv="X-UA-Compatible" (innecesario, solo en este archivo) -->
+
+  <!-- SEO Meta Tags -->
+  <title>IbizaDay — Experiencias Exclusivas de Día en Ibiza</title>
+  <meta name="description" content="Descubre experiencias diurnas de lujo en Ibiza. Day passes privados en villas exclusivas, wellness, sunsets y mucho más. Diseñado para quienes buscan lo extraordinario.">
+  <!-- FIX: eliminado meta name="keywords" (sin valor SEO, solo estaba en este archivo) -->
+  <meta name="author" content="IbizaDay">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://ibizaday.com/es/">
+
+  <!-- Hreflang Tags -->
+  <link rel="alternate" hreflang="es" href="https://ibizaday.com/es/">
+  <link rel="alternate" hreflang="en" href="https://ibizaday.com/en/">
+  <link rel="alternate" hreflang="de" href="https://ibizaday.com/de/">
+  <link rel="alternate" hreflang="x-default" href="https://ibizaday.com/en/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="IbizaDay — Experiencias Exclusivas de Día en Ibiza">
+  <meta property="og:description" content="Day passes privados en villas exclusivas, wellness, sunsets y experiencias diseñadas para quienes buscan lo extraordinario.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ibizaday.com/es/">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:site_name" content="IbizaDay">
+  <!-- FIX: og:image añadida (estaba comentada en todas las páginas — esencial para redes) -->
+  <meta property="og:image" content="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&h=630&fit=crop&q=80">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Villa privada con piscina infinity en Ibiza al atardecer">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="IbizaDay — Experiencias Exclusivas de Día en Ibiza">
+  <meta name="twitter:description" content="Day passes privados en villas exclusivas, wellness, sunsets y experiencias diseñadas para quienes buscan lo extraordinario.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&h=630&fit=crop&q=80">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="logo/favicon/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="logo/favicon/favicon.svg">
+  <link rel="icon" type="image/png" sizes="96x96" href="logo/favicon/favicon-96x96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="logo/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="logo/favicon/site.webmanifest">
+
+  <!-- Fonts — DM Mono y DM Sans desde Google Fonts, Balgain fonts locales -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=DM+Sans:wght@400;500;600&family=Raleway:wght@100;200&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- FIX: Fallback noscript — sin esto, toda la página quedaba invisible si JS falla -->
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "IbizaDay",
+    "description": "Experiencias diurnas de lujo en Ibiza. Day passes privados en villas exclusivas, wellness, sunsets y experiencias a medida.",
+    "url": "https://ibizaday.com",
+    "telephone": "+34 XXX XXX XXX",
+    "email": "info@ibizaday.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Ibiza",
+      "addressRegion": "Islas Baleares",
+      "addressCountry": "ES"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 38.9067,
+      "longitude": 1.4206
+    },
+    "areaServed": {
+      "@type": "Place",
+      "name": "Ibiza"
+    },
+    "priceRange": "€€€€",
+    "sameAs": [
+      "https://www.instagram.com/ibizaday",
+      "https://www.linkedin.com/company/ibizaday"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "IbizaDay",
+    "url": "https://ibizaday.com",
+    "inLanguage": ["es", "en", "de"]
+  }
+  </script>
+  <!-- FIX: eliminado SearchAction que apuntaba a URL inexistente (/experiencias/?q=...)
+       generaba advertencias en Google Search Console -->
+</head>
+<body>
+  <!-- Skip Navigation (Accessibility) -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- ========== HEADER ========== -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <!-- FIX: href normalizado a index.html (antes era /es/ — inconsistente con páginas internas) -->
+      <a href="index.html" class="site-logo" aria-label="IbizaDay — Inicio">
+        <img src="logo/IbizaDay_logo_no_backgroundcolor.svg" alt="IbizaDay" class="site-logo-img">
+      </a>
+
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-wrapper">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-wrapper" id="nav-wrapper">
+        <nav class="main-nav" role="navigation" aria-label="Navegación principal">
+          <!-- En home ningún link lleva is-active ni aria-current — correcto -->
+          <a href="experiencias.html" class="nav-link">Experiencias</a>
+          <a href="galeria.html" class="nav-link">Galería</a>
+          <a href="contacto.html" class="nav-link">Contacto</a>
+        </nav>
+        <div class="lang-selector" aria-label="Selector de idioma">
+          <!-- FIX: aria-current="true" añadido consistentemente (solo estaba en index.html) -->
+          <a href="/es/" class="is-active" aria-current="true">ES</a>
+          <span class="lang-separator" aria-hidden="true">|</span>
+          <a href="/en/">EN</a>
+          <span class="lang-separator" aria-hidden="true">|</span>
+          <a href="/de/">DE</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main id="main-content">
+
+    <!-- HERO SECTION -->
+    <section class="hero" aria-label="Presentación">
+      <div class="hero-logo-large">
+        <img src="logo/IbizaDay_logo(letras_fit).png" alt="IbizaDay" class="hero-logo-large-img">
+      </div>
+      <div class="hero-content container">
+        <picture>
+          <img
+            class="hero-image"
+            src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&h=1100&fit=crop&q=80"
+            alt="Vista aérea de una villa privada con piscina infinity en Ibiza al atardecer"
+            width="800"
+            height="1100"
+            fetchpriority="high"
+          >
+        </picture>
+        <div class="hero-text">
+          <p class="hero-subtitle">Experiencias exclusivas de dia en Ibiza</p>
+          <p class="hero-description">
+            Accede a villas privadas, terrazas ocultas y espacios que no encontrarás en ninguna guía. Experiencias diurnas diseñadas para quienes buscan tranquilidad, belleza y exclusividad absoluta.
+          </p>
+          <a href="experiencias.html" class="btn btn-arrow">Descubrir experiencias</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ABOUT / QUIÉNES SOMOS -->
+    <section class="about-section container" aria-labelledby="about-heading">
+      <div class="about-grid">
+        <div class="reveal">
+          <h2 id="about-heading" class="about-title">La isla como nunca la has vivido</h2>
+          <p class="about-text">
+            IbizaDay nace de la idea de que los mejores momentos ocurren durante el día, en espacios que la mayoría nunca descubrirá. Colaboramos con propietarios de villas y fincas exclusivas para crear day passes privados: jornadas completas de wellness, gastronomía y calma en entornos que definen el verdadero lujo mediterráneo.
+          </p>
+          <p class="about-text">
+            No vendemos fiestas. Creamos momentos. Para personas que entienden que la verdadera exclusividad es el silencio, la luz y el espacio.
+          </p>
+          <a href="contacto.html" class="btn btn-arrow">Contactar</a>
+        </div>
+        <picture class="reveal reveal-delay-1">
+          <img
+            class="about-image"
+            src="https://images.unsplash.com/photo-1602084655512-6e931737ffa9?w=700&h=900&fit=crop&q=80"
+            alt="Terraza con vistas al mar Mediterráneo en una villa privada de Ibiza"
+            width="700"
+            height="900"
+            loading="lazy"
+          >
+        </picture>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- EXPERIENCIAS PREVIEW -->
+    <section class="experiences-preview container" aria-labelledby="exp-heading">
+      <div class="section-header reveal">
+        <h2 id="exp-heading" class="section-title">Experiencias</h2>
+        <a href="experiencias.html" class="btn btn-arrow">Ver todas</a>
+      </div>
+      <div class="experiences-grid">
+        <!-- Card 1 -->
+        <article class="experience-card reveal">
+          <a href="experiencias.html" aria-label="Ver Wellness Retreat — desde 350 €">
+            <img
+              class="experience-card-image"
+              src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&h=800&fit=crop&q=80"
+              alt="Sesión de yoga al amanecer en terraza de villa privada con vistas al Mediterráneo"
+              width="600"
+              height="800"
+              loading="lazy"
+            >
+            <div class="experience-card-content">
+              <h3 class="experience-card-title">Wellness Retreat</h3>
+              <p class="experience-card-price">desde 350 €</p>
+              <p class="experience-card-desc">Yoga, spa y silencio absoluto en una villa exclusiva.</p>
+            </div>
+          </a>
+        </article>
+        <!-- Card 2 -->
+        <article class="experience-card reveal reveal-delay-1">
+          <a href="experiencias.html" aria-label="Ver Golden Sunset — desde 280 €">
+            <img
+              class="experience-card-image"
+              src="https://images.unsplash.com/photo-1540555700478-4be289fbec6e?w=600&h=800&fit=crop&q=80"
+              alt="Atardecer dorado sobre el Mediterráneo desde una terraza privada en Ibiza"
+              width="600"
+              height="800"
+              loading="lazy"
+            >
+            <div class="experience-card-content">
+              <h3 class="experience-card-title">Golden Sunset</h3>
+              <p class="experience-card-price">desde 280 €</p>
+              <p class="experience-card-desc">El mejor atardecer de Ibiza, solo para ti.</p>
+            </div>
+          </a>
+        </article>
+        <!-- Card 3 -->
+        <article class="experience-card reveal reveal-delay-2">
+          <a href="experiencias.html" aria-label="Ver Villa Day Pass — desde 450 €">
+            <img
+              class="experience-card-image"
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=800&fit=crop&q=80"
+              alt="Piscina infinity de villa de lujo con tumbonas y vistas al mar"
+              width="600"
+              height="800"
+              loading="lazy"
+            >
+            <div class="experience-card-content">
+              <h3 class="experience-card-title">Villa Day Pass</h3>
+              <p class="experience-card-price">desde 450 €</p>
+              <p class="experience-card-desc">Una villa privada entera, solo para tu grupo.</p>
+            </div>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- GALLERY PREVIEW -->
+    <section class="gallery-preview container" aria-labelledby="gallery-heading">
+      <div class="section-header reveal">
+        <h2 id="gallery-heading" class="section-title">Galería</h2>
+        <a href="galeria.html" class="btn btn-arrow">Ver galería completa</a>
+      </div>
+      <div class="gallery-mosaic reveal">
+        <div class="gallery-mosaic-item">
+          <img
+            src="https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=700&h=900&fit=crop&q=80"
+            alt="Aguas turquesas y acantilados de Ibiza desde una cala secreta"
+            width="700"
+            height="900"
+            loading="lazy"
+          >
+        </div>
+        <div class="gallery-mosaic-item">
+          <img
+            src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=400&fit=crop&q=80"
+            alt="Mesa gastronómica preparada en una terraza con vista al mar"
+            width="600"
+            height="400"
+            loading="lazy"
+          >
+        </div>
+        <div class="gallery-mosaic-item">
+          <img
+            src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500&h=650&fit=crop&q=80"
+            alt="Fachada de una villa tradicional ibicenca restaurada con jardín mediterráneo"
+            width="500"
+            height="650"
+            loading="lazy"
+          >
+        </div>
+        <div class="gallery-mosaic-item">
+          <img
+            src="https://images.unsplash.com/photo-1540555700478-4be289fbec6e?w=600&h=400&fit=crop&q=80"
+            alt="Puesta de sol en Ibiza con tonos naranjas y rosas sobre el horizonte marino"
+            width="600"
+            height="400"
+            loading="lazy"
+          >
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- CUSTOM EXPERIENCE CTA -->
+    <section class="custom-cta container reveal" aria-labelledby="custom-heading">
+      <h2 id="custom-heading" class="custom-cta-title">¿Algo diferente en mente?</h2>
+      <p class="custom-cta-text">
+        Cada persona es única y cada día en Ibiza puede serlo también. Cuéntanos qué imaginas y crearemos una experiencia a medida, solo para ti.
+      </p>
+      <a href="contacto.html" class="btn btn--accent btn-arrow">Solicitar experiencia personalizada</a>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter container" aria-labelledby="newsletter-heading">
+      <div class="newsletter-inner reveal">
+        <h2 id="newsletter-heading" class="newsletter-title">Mantente al día</h2>
+        <p class="newsletter-text">Recibe novedades sobre nuevas experiencias y acceso anticipado a eventos exclusivos.</p>
+        <form class="newsletter-form" action="#" method="POST" aria-label="Formulario de suscripción">
+          <label for="newsletter-email" class="sr-only">Correo electrónico</label>
+          <input
+            type="email"
+            id="newsletter-email"
+            name="email"
+            class="newsletter-input"
+            placeholder="Correo electrónico"
+            required
+            autocomplete="email"
+            aria-required="true"
+          >
+          <button type="submit" class="newsletter-submit">Suscribirse</button>
+        </form>
+        <p class="newsletter-privacy">Respetamos tu privacidad. Sin spam, solo contenido exclusivo.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand-name">IbizaDay</p>
+          <p class="footer-brand-tagline">Experiencias diurnas de lujo en Ibiza. Villas privadas, wellness, sunsets y momentos que no se repiten.</p>
+        </div>
+        <div>
+          <p class="footer-heading">Mapa del sitio</p>
+          <ul class="footer-links">
+            <li><a href="experiencias.html">Experiencias</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-heading">Síguenos</p>
+          <ul class="footer-links">
+            <li><a href="https://instagram.com/ibizaday" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="https://linkedin.com/company/ibizaday" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 IbizaDay. Todos los derechos reservados.</p>
+        <div class="lang-selector" aria-label="Selector de idioma">
+          <a href="/es/" class="is-active" aria-current="true">ES</a>
+          <span class="lang-separator" aria-hidden="true">|</span>
+          <a href="/en/">EN</a>
+          <span class="lang-separator" aria-hidden="true">|</span>
+          <a href="/de/">DE</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-giant-logo" aria-hidden="true">IBIZADAY</div>
+  </footer>
+
+  <!-- FIX: JS extraído a main.js — antes estaba duplicado en cada página con inconsistencias -->
+  <script src="main.js" defer></script>
+</body>
+</html>

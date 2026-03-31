@@ -1,0 +1,21 @@
+{
+  "name": "Ibiza Day",
+  "short_name": "IbizaDay",
+  "icons": [
+    {
+      "src": "/https://ibizaday.com/my-favicon/favicon.ico/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/https://ibizaday.com/my-favicon/favicon.ico/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "theme_color": "#f0ebe1",
+  "background_color": "#f0ebe1",
+  "display": "standalone"
+}

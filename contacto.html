@@ -1,0 +1,225 @@
+ la<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Contacto — IbizaDay | Experiencias Personalizadas en Ibiza</title>
+  <meta name="description" content="Contacta con IbizaDay para crear experiencias a medida en Ibiza. Cuéntanos tu idea y diseñamos algo único para ti. Villas privadas, wellness, sunsets y más.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://ibizaday.com/es/contacto/">
+
+  <link rel="alternate" hreflang="es" href="https://ibizaday.com/es/contacto/">
+  <link rel="alternate" hreflang="en" href="https://ibizaday.com/en/contact/">
+  <link rel="alternate" hreflang="de" href="https://ibizaday.com/de/kontakt/">
+  <link rel="alternate" hreflang="x-default" href="https://ibizaday.com/en/contact/">
+
+  <meta property="og:title" content="Contacto — IbizaDay">
+  <meta property="og:description" content="Crea experiencias personalizadas de lujo en Ibiza. Contacta con nosotros.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ibizaday.com/es/contacto/">
+  <!-- FIX: og:image añadida (estaba comentada/ausente en páginas internas) -->
+  <meta property="og:image" content="https://images.unsplash.com/photo-1602084655512-6e931737ffa9?w=1200&h=630&fit=crop&q=80">
+  <meta property="og:image:alt" content="Terraza exclusiva en Ibiza con el mar Mediterráneo al fondo">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="logo/favicon/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="logo/favicon/favicon.svg">
+  <link rel="icon" type="image/png" sizes="96x96" href="logo/favicon/favicon-96x96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="logo/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="logo/favicon/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=DM+Sans:wght@400;500;600&family=Raleway:wght@100;200&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- FIX: Fallback noscript — sin esto, toda la página quedaba invisible si JS falla -->
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <a href="index.html" class="site-logo" aria-label="IbizaDay — Inicio">
+        <img src="logo/IbizaDay_logo_no_backgroundcolor.svg" alt="IbizaDay" class="site-logo-img">
+      </a>
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-wrapper">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-wrapper" id="nav-wrapper">
+        <nav class="main-nav" role="navigation" aria-label="Navegación principal">
+          <a href="experiencias.html" class="nav-link">Experiencias</a>
+          <a href="galeria.html" class="nav-link">Galería</a>
+          <!-- FIX: aria-current="page" añadido al enlace activo (faltaba en todas las páginas) -->
+          <a href="contacto.html" class="nav-link is-active" aria-current="page">Contacto</a>
+        </nav>
+        <div class="lang-selector" aria-label="Selector de idioma">
+          <!-- FIX: aria-current="true" añadido consistentemente (faltaba en páginas internas) -->
+          <a href="/es/contacto/" class="is-active" aria-current="true">ES</a>
+          <span class="lang-separator" aria-hidden="true">|</span>
+          <a href="/en/contact/">EN</a>
+          <span class="lang-separator" aria-hidden="true">|</span>
+          <a href="/de/kontakt/">DE</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main id="main-content">
+
+    <div class="page-header container">
+      <h1 class="page-title reveal">CONTACTO</h1>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Contact Form + Image -->
+    <div class="contact-grid container">
+      <div class="reveal">
+        <p class="contact-intro">
+          ¿Tienes en mente algo especial? Cuéntanos qué imaginas y crearemos una experiencia a medida. También puedes escribirnos para cualquier consulta sobre nuestros paquetes o disponibilidad.
+        </p>
+
+        <form class="contact-form" action="#" method="POST" aria-label="Formulario de contacto">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="contact-name" class="form-label">Nombre</label>
+              <input type="text" id="contact-name" name="name" class="form-input" required autocomplete="name" aria-required="true">
+            </div>
+            <div class="form-field">
+              <label for="contact-email" class="form-label">Email</label>
+              <input type="email" id="contact-email" name="email" class="form-input" required autocomplete="email" aria-required="true">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="contact-phone" class="form-label">Teléfono</label>
+              <input type="tel" id="contact-phone" name="phone" class="form-input" autocomplete="tel">
+            </div>
+            <div class="form-field">
+              <label for="contact-dates" class="form-label">Fechas estimadas</label>
+              <input type="text" id="contact-dates" name="dates" class="form-input" placeholder="Ej: 15-20 julio 2026">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="contact-guests" class="form-label">Número de personas</label>
+              <select id="contact-guests" name="guests" class="form-select">
+                <option value="">Seleccionar</option>
+                <option value="1-2">1-2 personas</option>
+                <option value="3-4">3-4 personas</option>
+                <option value="5-8">5-8 personas</option>
+                <option value="9+">9 o más</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="contact-type" class="form-label">Tipo de experiencia</label>
+              <select id="contact-type" name="experience_type" class="form-select">
+                <option value="">Seleccionar</option>
+                <option value="wellness">Wellness Retreat</option>
+                <option value="sunset">Golden Sunset</option>
+                <option value="villa">Villa Day Pass</option>
+                <option value="tour">Isla Secreta Tour</option>
+                <option value="ultimate">Ultimate Ibiza Day</option>
+                <option value="custom">Experiencia personalizada</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="contact-message" class="form-label">Mensaje</label>
+            <!-- FIX: aria-required="true" añadido (faltaba en el textarea original) -->
+            <textarea id="contact-message" name="message" class="form-textarea" rows="5" placeholder="Cuéntanos qué tienes en mente. Cualquier detalle nos ayuda a diseñar algo perfecto para ti." aria-required="false"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--filled btn-arrow">Enviar consulta</button>
+        </form>
+
+        <div class="contact-details">
+          <p class="contact-details-title">Contacto directo</p>
+          <p class="contact-details-item">Email: <a href="mailto:info@ibizaday.com">info@ibizaday.com</a></p>
+          <p class="contact-details-item">WhatsApp: <a href="https://wa.me/34XXXXXXXXX" target="_blank" rel="noopener noreferrer">+34 XXX XXX XXX</a></p>
+          <p class="contact-details-item">Instagram: <a href="https://instagram.com/ibizaday" target="_blank" rel="noopener noreferrer">@ibizaday</a></p>
+        </div>
+      </div>
+
+      <picture class="reveal reveal-delay-1">
+        <img
+          class="contact-image"
+          src="https://images.unsplash.com/photo-1602084655512-6e931737ffa9?w=700&h=950&fit=crop&q=80"
+          alt="Vista desde una terraza exclusiva en Ibiza con el mar Mediterráneo al fondo"
+          width="700"
+          height="950"
+          loading="lazy"
+        >
+      </picture>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Newsletter -->
+    <section class="newsletter container" aria-labelledby="newsletter-heading">
+      <div class="newsletter-inner reveal">
+        <h2 id="newsletter-heading" class="newsletter-title">Mantente al día</h2>
+        <p class="newsletter-text">Recibe novedades sobre nuevas experiencias y acceso anticipado a eventos exclusivos.</p>
+        <form class="newsletter-form" action="#" method="POST" aria-label="Formulario de suscripción">
+          <label for="newsletter-email" class="sr-only">Correo electrónico</label>
+          <!-- FIX: aria-required="true" añadido (faltaba en páginas internas) -->
+          <input type="email" id="newsletter-email" name="email" class="newsletter-input" placeholder="Correo electrónico" required autocomplete="email" aria-required="true">
+          <button type="submit" class="newsletter-submit">Suscribirse</button>
+        </form>
+        <p class="newsletter-privacy">Respetamos tu privacidad. Sin spam, solo contenido exclusivo.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand-name">IbizaDay</p>
+          <p class="footer-brand-tagline">Experiencias diurnas de lujo en Ibiza. Villas privadas, wellness, sunsets y momentos que no se repiten.</p>
+        </div>
+        <div>
+          <p class="footer-heading">Mapa del sitio</p>
+          <ul class="footer-links">
+            <li><a href="experiencias.html">Experiencias</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-heading">Síguenos</p>
+          <ul class="footer-links">
+            <li><a href="https://instagram.com/ibizaday" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="https://linkedin.com/company/ibizaday" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 IbizaDay. Todos los derechos reservados.</p>
+        <div class="lang-selector" aria-label="Selector de idioma">
+          <a href="/es/contacto/" class="is-active" aria-current="true">ES</a>
+          <span class="lang-separator" aria-hidden="true">|</span>
+          <a href="/en/contact/">EN</a>
+          <span class="lang-separator" aria-hidden="true">|</span>
+          <a href="/de/kontakt/">DE</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-giant-logo" aria-hidden="true">IBIZADAY</div>
+  </footer>
+
+  <!-- FIX: JS extraído a main.js — antes era inline duplicado con bug en aria-label -->
+  <script src="main.js" defer></script>
+</body>
+</html>

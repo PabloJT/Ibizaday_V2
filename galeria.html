@@ -1,0 +1,211 @@
+e <!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Galería — IbizaDay | Imágenes de Experiencias de Lujo en Ibiza</title>
+  <meta name="description" content="Explora nuestra galería de imágenes: villas privadas, atardeceres exclusivos, wellness y las experiencias más memorables en Ibiza.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://ibizaday.com/es/galeria/">
+
+  <link rel="alternate" hreflang="es" href="https://ibizaday.com/es/galeria/">
+  <link rel="alternate" hreflang="en" href="https://ibizaday.com/en/gallery/">
+  <link rel="alternate" hreflang="de" href="https://ibizaday.com/de/galerie/">
+  <link rel="alternate" hreflang="x-default" href="https://ibizaday.com/en/gallery/">
+
+  <meta property="og:title" content="Galería — IbizaDay">
+  <meta property="og:description" content="Imágenes de villas privadas, atardeceres y experiencias exclusivas en Ibiza.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ibizaday.com/es/galeria/">
+  <!-- FIX: og:image añadida (estaba comentada/ausente en páginas internas) -->
+  <meta property="og:image" content="https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=1200&h=630&fit=crop&q=80">
+  <meta property="og:image:alt" content="Aguas turquesas de una cala secreta en Ibiza">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="logo/favicon/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="logo/favicon/favicon.svg">
+  <link rel="icon" type="image/png" sizes="96x96" href="logo/favicon/favicon-96x96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="logo/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="logo/favicon/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=DM+Sans:wght@400;500;600&family=Raleway:wght@100;200&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- FIX: Fallback noscript — sin esto, toda la página quedaba invisible si JS falla -->
+  <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <a href="index.html" class="site-logo" aria-label="IbizaDay — Inicio">
+        <img src="logo/IbizaDay_logo_no_backgroundcolor.svg" alt="IbizaDay" class="site-logo-img">
+      </a>
+      <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-wrapper">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-wrapper" id="nav-wrapper">
+        <nav class="main-nav" role="navigation" aria-label="Navegación principal">
+          <a href="experiencias.html" class="nav-link">Experiencias</a>
+          <!-- FIX: aria-current="page" añadido al enlace activo (faltaba en todas las páginas) -->
+          <a href="galeria.html" class="nav-link is-active" aria-current="page">Galería</a>
+          <a href="contacto.html" class="nav-link">Contacto</a>
+        </nav>
+        <div class="lang-selector" aria-label="Selector de idioma">
+          <!-- FIX: aria-current="true" añadido consistentemente (faltaba en páginas internas) -->
+          <a href="/es/galeria/" class="is-active" aria-current="true">ES</a>
+          <span class="lang-separator" aria-hidden="true">|</span>
+          <a href="/en/gallery/">EN</a>
+          <span class="lang-separator" aria-hidden="true">|</span>
+          <a href="/de/galerie/">DE</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main id="main-content">
+
+    <div class="page-header container">
+      <h1 class="page-title reveal">GALERÍA</h1>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Masonry Gallery -->
+    <!-- FIX: Lightbox activado — main.js detecta .gallery-item y añade interactividad.
+         cursor:pointer y focus ring gestionados en CSS. -->
+    <div class="gallery-masonry container">
+      <div class="gallery-item gallery-item--large reveal">
+        <img
+          src="https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=700&h=950&fit=crop&q=80"
+          alt="Aguas turquesas de una cala secreta en la costa norte de Ibiza"
+          width="700" height="950" loading="lazy"
+        >
+      </div>
+      <div class="gallery-item gallery-item--wide reveal">
+        <img
+          src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&h=500&fit=crop&q=80"
+          alt="Mesa gastronómica elegante preparada al aire libre con vista al mar Mediterráneo"
+          width="800" height="500" loading="lazy"
+        >
+      </div>
+      <div class="gallery-item gallery-item--square reveal">
+        <img
+          src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&h=600&fit=crop&q=80"
+          alt="Fachada de villa ibicenca tradicional con jardín de plantas mediterráneas"
+          width="600" height="600" loading="lazy"
+        >
+      </div>
+      <div class="gallery-item gallery-item--large reveal">
+        <img
+          src="https://images.unsplash.com/photo-1540555700478-4be289fbec6e?w=700&h=950&fit=crop&q=80"
+          alt="Puesta de sol sobre el horizonte marino de Ibiza con tonos dorados y rosados"
+          width="700" height="950" loading="lazy"
+        >
+      </div>
+      <div class="gallery-item gallery-item--wide reveal">
+        <img
+          src="https://images.unsplash.com/photo-1602084655512-6e931737ffa9?w=800&h=500&fit=crop&q=80"
+          alt="Terraza panorámica con piscina infinity y tumbonas frente al mar en Ibiza"
+          width="800" height="500" loading="lazy"
+        >
+      </div>
+      <div class="gallery-item gallery-item--square reveal">
+        <img
+          src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&h=600&fit=crop&q=80"
+          alt="Mujer practicando yoga al amanecer en una terraza con vistas al mar"
+          width="600" height="600" loading="lazy"
+        >
+      </div>
+      <div class="gallery-item gallery-item--large reveal">
+        <img
+          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&h=950&fit=crop&q=80"
+          alt="Piscina de una villa de lujo rodeada de vegetación tropical en Ibiza"
+          width="700" height="950" loading="lazy"
+        >
+      </div>
+      <div class="gallery-item gallery-item--wide reveal">
+        <img
+          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=500&fit=crop&q=80"
+          alt="Playa de arena blanca con aguas cristalinas en una cala tranquila de Ibiza"
+          width="800" height="500" loading="lazy"
+        >
+      </div>
+      <div class="gallery-item gallery-item--square reveal">
+        <img
+          src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=600&h=600&fit=crop&q=80"
+          alt="Vista aérea de costa ibicenca con pinos y acantilados al atardecer"
+          width="600" height="600" loading="lazy"
+        >
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Newsletter -->
+    <section class="newsletter container" aria-labelledby="newsletter-heading">
+      <div class="newsletter-inner reveal">
+        <h2 id="newsletter-heading" class="newsletter-title">Mantente al día</h2>
+        <p class="newsletter-text">Recibe novedades sobre nuevas experiencias y acceso anticipado a eventos exclusivos.</p>
+        <form class="newsletter-form" action="#" method="POST" aria-label="Formulario de suscripción">
+          <label for="newsletter-email" class="sr-only">Correo electrónico</label>
+          <!-- FIX: aria-required="true" añadido (faltaba en páginas internas) -->
+          <input type="email" id="newsletter-email" name="email" class="newsletter-input" placeholder="Correo electrónico" required autocomplete="email" aria-required="true">
+          <button type="submit" class="newsletter-submit">Suscribirse</button>
+        </form>
+        <p class="newsletter-privacy">Respetamos tu privacidad. Sin spam, solo contenido exclusivo.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand-name">IbizaDay</p>
+          <p class="footer-brand-tagline">Experiencias diurnas de lujo en Ibiza. Villas privadas, wellness, sunsets y momentos que no se repiten.</p>
+        </div>
+        <div>
+          <p class="footer-heading">Mapa del sitio</p>
+          <ul class="footer-links">
+            <li><a href="experiencias.html">Experiencias</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-heading">Síguenos</p>
+          <ul class="footer-links">
+            <li><a href="https://instagram.com/ibizaday" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            <li><a href="https://linkedin.com/company/ibizaday" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 IbizaDay. Todos los derechos reservados.</p>
+        <div class="lang-selector" aria-label="Selector de idioma">
+          <a href="/es/galeria/" class="is-active" aria-current="true">ES</a>
+          <span class="lang-separator" aria-hidden="true">|</span>
+          <a href="/en/gallery/">EN</a>
+          <span class="lang-separator" aria-hidden="true">|</span>
+          <a href="/de/galerie/">DE</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-giant-logo" aria-hidden="true">IBIZADAY</div>
+  </footer>
+
+  <!-- FIX: JS extraído a main.js — antes era inline duplicado.
+       El lightbox se activa automáticamente al detectar .gallery-item -->
+  <script src="main.js" defer></script>
+</body>
+</html>
