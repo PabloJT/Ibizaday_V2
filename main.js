@@ -163,7 +163,8 @@
 
     /* Show all images in flex row */
     images.forEach(function (img) {
-      img.style.display = 'block';
+      img.style.minWidth = '100%';
+      img.style.flexShrink = '0';
     });
 
     var current = 0;
@@ -207,6 +208,7 @@
 
     /* Make gallery a sliding track */
     gallery.style.display = 'flex';
+    gallery.style.width = '100%';
     gallery.style.transition = 'transform 0.45s cubic-bezier(0.16,1,0.3,1)';
     gallery.style.willChange = 'transform';
 
