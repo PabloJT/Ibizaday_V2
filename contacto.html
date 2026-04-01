@@ -103,7 +103,7 @@
               <input type="tel" id="contact-phone" name="phone" class="form-input" autocomplete="tel">
             </div>
             <div class="form-field">
-              <label for="contact-dates" class="form-label">Fechas estimadas</label>
+              <label for="contact-dates" class="form-label">Fecha exacta o estimada</label>
               <input type="text" id="contact-dates" name="dates" class="form-input" placeholder="Ej: 15-20 julio 2026">
             </div>
           </div>
@@ -111,25 +111,26 @@
           <div class="form-row">
             <div class="form-field">
               <label for="contact-guests" class="form-label">Numero de personas</label>
-              <select id="contact-guests" name="guests" class="form-select">
-                <option value="">Seleccionar</option>
-                <option value="1-2">1-2 personas</option>
-                <option value="3-4">3-4 personas</option>
-                <option value="5-8">5-8 personas</option>
-                <option value="9+">9 o mas</option>
-              </select>
+              <input type="text" id="contact-guests" name="guests" class="form-input" list="guests-list" placeholder="Ej: 4 personas">
+              <datalist id="guests-list">
+                <option value="1-2 personas">
+                <option value="3-4 personas">
+                <option value="5-8 personas">
+                <option value="9-15 personas">
+                <option value="Más de 15 personas">
+              </datalist>
             </div>
             <div class="form-field">
               <label for="contact-type" class="form-label">Tipo de experiencia</label>
-              <select id="contact-type" name="experience_type" class="form-select">
-                <option value="">Seleccionar</option>
-                <option value="wellness">Wellness Retreat</option>
-                <option value="sunset">Golden Sunset</option>
-                <option value="villa">Villa Day Pass</option>
-                <option value="tour">Isla Secreta Tour</option>
-                <option value="ultimate">Ultimate Ibiza Day</option>
-                <option value="custom">Experiencia personalizada</option>
-              </select>
+              <input type="text" id="contact-type" name="experience_type" class="form-input" list="type-list" placeholder="Ej: Wellness Retreat">
+              <datalist id="type-list">
+                <option value="Wellness Retreat">
+                <option value="Golden Sunset">
+                <option value="Villa Day Pass">
+                <option value="Isla Secreta Tour">
+                <option value="Ultimate Ibiza Day">
+                <option value="Experiencia personalizada">
+              </datalist>
             </div>
           </div>
 
@@ -143,10 +144,9 @@
         </form>
 
         <!-- Success Popup -->
-        <div id="contact-success-popup" role="dialog" aria-modal="true" aria-labelledby="popup-title" style="display:none;position:fixed;inset:0;z-index:9000;display:none;align-items:center;justify-content:center;">
+        <div id="contact-success-popup" role="dialog" aria-modal="true" aria-labelledby="popup-title" style="display:none;position:fixed;inset:0;z-index:9000;align-items:center;justify-content:center;">
           <div style="position:absolute;inset:0;background:rgba(26,26,26,0.7);" id="popup-backdrop"></div>
           <div style="position:relative;z-index:1;background:var(--color-bg);padding:2.5rem 2rem;max-width:420px;width:90%;text-align:center;border-top:3px solid var(--color-accent);">
-            <div style="font-size:2.5rem;margin-bottom:1rem;">🌿</div>
             <h2 id="popup-title" style="font-family:var(--font-display);font-size:1.5rem;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.75rem;">Solicitud enviada</h2>
             <p style="font-family:var(--font-mono);font-size:0.875rem;color:var(--color-text-light);line-height:1.7;margin-bottom:1.5rem;">En breve te confirmamos tu experiencia. Nuestro equipo revisará tu solicitud y se pondrá en contacto contigo en menos de 24 horas.</p>
             <button id="popup-close" style="font-family:var(--font-mono);font-size:0.8125rem;letter-spacing:0.04em;padding:0.875rem 2rem;background:var(--color-text);color:var(--color-bg);border:none;cursor:pointer;width:100%;">Cerrar</button>
@@ -156,8 +156,7 @@
         <div class="contact-details">
           <p class="contact-details-title">Contacto directo</p>
           <p class="contact-details-item">Email: <a href="mailto:info@ibizaday.com">info@ibizaday.com</a></p>
-          <p class="contact-details-item">WhatsApp: <a href="https://wa.me/34XXXXXXXXX" target="_blank" rel="noopener noreferrer">+34 XXX XXX XXX</a></p>
-          <p class="contact-details-item">Instagram: <a href="https://instagram.com/ibizaday" target="_blank" rel="noopener noreferrer">@ibizaday</a></p>
+          <p class="contact-details-item">WhatsApp: <a href="https://wa.me/34628210098" target="_blank" rel="noopener noreferrer">+34 628 21 00 98</a></p>
         </div>
       </div>
 
@@ -208,13 +207,6 @@
             <li><a href="contacto.html">Contacto</a></li>
           </ul>
         </div>
-        <div>
-          <p class="footer-heading">Siguenos</p>
-          <ul class="footer-links">
-            <li><a href="https://instagram.com/ibizaday" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-            <li><a href="https://linkedin.com/company/ibizaday" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-          </ul>
-        </div>
       </div>
       <div class="footer-bottom">
         <p class="footer-copy">&copy; 2026 IbizaDay. Todos los derechos reservados.</p>
@@ -238,13 +230,18 @@
       var backdrop = document.getElementById('popup-backdrop');
       var form = document.querySelector('.contact-form');
 
+      var autoCloseTimer;
+
       function showPopup() {
         popup.style.display = 'flex';
         document.body.style.overflow = 'hidden';
         closeBtn.focus();
+        /* Auto-close after 15 seconds */
+        autoCloseTimer = setTimeout(hidePopup, 15000);
       }
 
       function hidePopup() {
+        clearTimeout(autoCloseTimer);
         popup.style.display = 'none';
         document.body.style.overflow = '';
         try { sessionStorage.removeItem('ibizaday_pack'); } catch(e) {}
@@ -289,9 +286,9 @@
 
         textarea.value = lines.join('\n');
 
-        /* Also pre-select "Experiencia personalizada" in the type selector */
-        var typeSelect = document.getElementById('contact-type');
-        if (typeSelect) typeSelect.value = 'custom';
+        /* Also pre-fill "Experiencia personalizada" in the type input */
+        var typeInput = document.getElementById('contact-type');
+        if (typeInput && !typeInput.value.trim()) typeInput.value = 'Experiencia personalizada';
 
         /* Show a subtle notice */
         var notice = document.createElement('p');

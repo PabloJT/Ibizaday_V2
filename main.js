@@ -395,71 +395,9 @@
     if (lastFocusedBeforeDrawer) lastFocusedBeforeDrawer.focus();
   }
 
-  /* ---- Success toast popup ---- */
-  function showSuccessToast() {
-    var existing = document.getElementById('pack-success-toast');
-    if (existing) existing.remove();
-
-    var toast = document.createElement('div');
-    toast.id = 'pack-success-toast';
-    toast.setAttribute('role', 'status');
-    toast.setAttribute('aria-live', 'polite');
-    toast.style.cssText = [
-      'position:fixed',
-      'top:50%',
-      'left:50%',
-      'transform:translate(-50%,-50%) scale(0.92)',
-      'z-index:9000',
-      'background-color:#1A1A1A',
-      'color:#FAF7F3',
-      'padding:2.5rem 2rem',
-      'max-width:min(90vw,420px)',
-      'width:100%',
-      'text-align:center',
-      'box-shadow:0 20px 60px rgba(0,0,0,0.35)',
-      'opacity:0',
-      'transition:opacity 0.3s ease, transform 0.3s ease',
-      'border-top:3px solid #8B7355'
-    ].join(';');
-
-    toast.innerHTML = [
-      '<p style="font-family:\'DM Sans\',sans-serif;font-size:2rem;margin-bottom:0.5rem;">✓</p>',
-      '<p style="font-family:\'DM Sans\',sans-serif;font-size:1.125rem;font-weight:600;letter-spacing:0.04em;margin-bottom:0.75rem;">¡Solicitud enviada!</p>',
-      '<p style="font-family:\'DM Mono\',monospace;font-size:0.8125rem;line-height:1.6;color:rgba(250,247,243,0.75);">En breve te confirmamos tu experiencia personalizada. Nuestro equipo se pondrá en contacto contigo.</p>'
-    ].join('');
-
-    document.body.appendChild(toast);
-
-    /* Animate in */
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        toast.style.opacity = '1';
-        toast.style.transform = 'translate(-50%,-50%) scale(1)';
-      });
-    });
-
-    /* Auto-dismiss after 3.5s */
-    setTimeout(function () {
-      toast.style.opacity = '0';
-      toast.style.transform = 'translate(-50%,-50%) scale(0.92)';
-      setTimeout(function () { toast.remove(); }, 350);
-    }, 3500);
-
-    /* Click to dismiss */
-    toast.addEventListener('click', function () {
-      toast.style.opacity = '0';
-      toast.style.transform = 'translate(-50%,-50%) scale(0.92)';
-      setTimeout(function () { toast.remove(); }, 350);
-    });
-  }
-
   /* ---- Navigate to contact ---- */
   function goToContact() {
-    showSuccessToast();
-    /* Navigate after toast is visible */
-    setTimeout(function () {
-      window.location.href = 'contacto.html';
-    }, 1200);
+    window.location.href = 'contacto.html';
   }
 
   /* ---- Helpers ---- */
