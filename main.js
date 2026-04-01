@@ -219,6 +219,327 @@
   });
 }());
 
+/* --- Pack Builder (activo solo en catalogo.html) --- */
+(function () {
+  var STORAGE_KEY = 'ibizaday_pack';
+
+  /* ---- Persistence ---- */
+  function loadPack() {
+    try {
+      var raw = sessionStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : { items: [] };
+    } catch (e) {
+      return { items: [] };
+    }
+  }
+
+  function savePack(pack) {
+    try {
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(pack));
+    } catch (e) { /* quota exceeded — silently ignore */ }
+  }
+
+  /* ---- Calculations ---- */
+  function calculateTotal(pack) {
+    return pack.items.reduce(function (sum, item) { return sum + item.price; }, 0);
+  }
+
+  function formatPrice(number) {
+    return number.toLocaleString('es-ES');
+  }
+
+  /* ---- Pack mutations ---- */
+  function addItem(itemData) {
+    var pack = loadPack();
+    var exists = pack.items.some(function (i) { return i.id === itemData.id; });
+    if (exists) return;
+    pack.items.push(itemData);
+    savePack(pack);
+    updateAll(pack);
+  }
+
+  function removeItem(itemId) {
+    var pack = loadPack();
+    pack.items = pack.items.filter(function (i) { return i.id !== itemId; });
+    savePack(pack);
+    updateAll(pack);
+  }
+
+  function toggleItem(itemData) {
+    var pack = loadPack();
+    var exists = pack.items.some(function (i) { return i.id === itemData.id; });
+    if (exists) {
+      removeItem(itemData.id);
+    } else {
+      addItem(itemData);
+    }
+  }
+
+  /* ---- UI updates ---- */
+  function updateBar(pack) {
+    var bar = document.getElementById('pack-bar');
+    var countEl = document.getElementById('pack-bar-count');
+    var totalEl = document.getElementById('pack-bar-total');
+    if (!bar) return;
+
+    var count = pack.items.length;
+    var total = calculateTotal(pack);
+
+    countEl.textContent = count;
+    totalEl.textContent = formatPrice(total) + ' €';
+
+    if (count > 0) {
+      bar.classList.add('is-visible');
+    } else {
+      bar.classList.remove('is-visible');
+      closeDrawer();
+    }
+  }
+
+  function updateDrawer(pack) {
+    var list = document.getElementById('pack-drawer-list');
+    var drawerTotal = document.getElementById('pack-drawer-total');
+    if (!list) return;
+
+    list.innerHTML = '';
+
+    if (pack.items.length === 0) {
+      var empty = document.createElement('li');
+      empty.className = 'pack-drawer-empty';
+      empty.textContent = 'Tu pack esta vacio. Añade espacios, servicios o amenities desde el catalogo.';
+      list.appendChild(empty);
+    } else {
+      pack.items.forEach(function (item) {
+        var li = document.createElement('li');
+        li.className = 'pack-drawer-item';
+        li.innerHTML = [
+          '<div class="pack-drawer-item-info">',
+            '<p class="pack-drawer-item-name">' + escapeHtml(item.name) + '</p>',
+            '<p class="pack-drawer-item-category">' + escapeHtml(item.category) + '</p>',
+          '</div>',
+          '<span class="pack-drawer-item-price">' + formatPrice(item.price) + ' €</span>',
+          '<button class="pack-drawer-item-remove" data-id="' + escapeHtml(item.id) + '" aria-label="Eliminar ' + escapeHtml(item.name) + ' del pack">✕</button>'
+        ].join('');
+        list.appendChild(li);
+      });
+
+      list.querySelectorAll('.pack-drawer-item-remove').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          removeItem(btn.getAttribute('data-id'));
+        });
+      });
+    }
+
+    if (drawerTotal) {
+      drawerTotal.textContent = formatPrice(calculateTotal(pack)) + ' €';
+    }
+  }
+
+  function updateCardButtons(pack) {
+    var buttons = document.querySelectorAll('.btn-add-pack');
+    buttons.forEach(function (btn) {
+      var card = btn.closest('[data-id]');
+      if (!card) return;
+      var id = card.getAttribute('data-id');
+      var inPack = pack.items.some(function (i) { return i.id === id; });
+      if (inPack) {
+        btn.classList.add('is-added');
+        btn.textContent = '✓ En el pack';
+      } else {
+        btn.classList.remove('is-added');
+        btn.textContent = '+ Añadir al pack';
+      }
+    });
+  }
+
+  function updateAll(pack) {
+    updateBar(pack);
+    updateDrawer(pack);
+    updateCardButtons(pack);
+  }
+
+  /* ---- Drawer open/close ---- */
+  var lastFocusedBeforeDrawer;
+
+  function openDrawer() {
+    var drawer = document.getElementById('pack-drawer');
+    var overlay = document.getElementById('pack-drawer-overlay');
+    var toggle = document.getElementById('pack-bar-toggle');
+    if (!drawer) return;
+    lastFocusedBeforeDrawer = document.activeElement;
+    drawer.classList.add('is-open');
+    drawer.setAttribute('aria-hidden', 'false');
+    if (overlay) {
+      overlay.classList.add('is-open');
+      overlay.setAttribute('aria-hidden', 'false');
+    }
+    if (toggle) toggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    var closeBtn = document.getElementById('pack-drawer-close');
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeDrawer() {
+    var drawer = document.getElementById('pack-drawer');
+    var overlay = document.getElementById('pack-drawer-overlay');
+    var toggle = document.getElementById('pack-bar-toggle');
+    if (!drawer) return;
+    drawer.classList.remove('is-open');
+    drawer.setAttribute('aria-hidden', 'true');
+    if (overlay) {
+      overlay.classList.remove('is-open');
+      overlay.setAttribute('aria-hidden', 'true');
+    }
+    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    if (lastFocusedBeforeDrawer) lastFocusedBeforeDrawer.focus();
+  }
+
+  /* ---- Success toast popup ---- */
+  function showSuccessToast() {
+    var existing = document.getElementById('pack-success-toast');
+    if (existing) existing.remove();
+
+    var toast = document.createElement('div');
+    toast.id = 'pack-success-toast';
+    toast.setAttribute('role', 'status');
+    toast.setAttribute('aria-live', 'polite');
+    toast.style.cssText = [
+      'position:fixed',
+      'top:50%',
+      'left:50%',
+      'transform:translate(-50%,-50%) scale(0.92)',
+      'z-index:9000',
+      'background-color:#1A1A1A',
+      'color:#FAF7F3',
+      'padding:2.5rem 2rem',
+      'max-width:min(90vw,420px)',
+      'width:100%',
+      'text-align:center',
+      'box-shadow:0 20px 60px rgba(0,0,0,0.35)',
+      'opacity:0',
+      'transition:opacity 0.3s ease, transform 0.3s ease',
+      'border-top:3px solid #8B7355'
+    ].join(';');
+
+    toast.innerHTML = [
+      '<p style="font-family:\'DM Sans\',sans-serif;font-size:2rem;margin-bottom:0.5rem;">✓</p>',
+      '<p style="font-family:\'DM Sans\',sans-serif;font-size:1.125rem;font-weight:600;letter-spacing:0.04em;margin-bottom:0.75rem;">¡Solicitud enviada!</p>',
+      '<p style="font-family:\'DM Mono\',monospace;font-size:0.8125rem;line-height:1.6;color:rgba(250,247,243,0.75);">En breve te confirmamos tu experiencia personalizada. Nuestro equipo se pondrá en contacto contigo.</p>'
+    ].join('');
+
+    document.body.appendChild(toast);
+
+    /* Animate in */
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        toast.style.opacity = '1';
+        toast.style.transform = 'translate(-50%,-50%) scale(1)';
+      });
+    });
+
+    /* Auto-dismiss after 3.5s */
+    setTimeout(function () {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translate(-50%,-50%) scale(0.92)';
+      setTimeout(function () { toast.remove(); }, 350);
+    }, 3500);
+
+    /* Click to dismiss */
+    toast.addEventListener('click', function () {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translate(-50%,-50%) scale(0.92)';
+      setTimeout(function () { toast.remove(); }, 350);
+    });
+  }
+
+  /* ---- Navigate to contact ---- */
+  function goToContact() {
+    showSuccessToast();
+    /* Navigate after toast is visible */
+    setTimeout(function () {
+      window.location.href = 'contacto.html';
+    }, 1200);
+  }
+
+  /* ---- Helpers ---- */
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  /* ---- Init ---- */
+  function initPackBuilder() {
+    var cards = document.querySelectorAll('[data-id][data-price]');
+    if (!cards.length) return;
+
+    /* Attach add-to-pack buttons */
+    cards.forEach(function (card) {
+      var btn = card.querySelector('.btn-add-pack');
+      if (!btn) return;
+
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var itemData = {
+          id: card.getAttribute('data-id'),
+          category: card.getAttribute('data-category') || '',
+          name: card.getAttribute('data-name') || '',
+          price: parseFloat(card.getAttribute('data-price')) || 0,
+          priceLabel: card.getAttribute('data-price-label') || '',
+          unit: card.getAttribute('data-unit') || ''
+        };
+        toggleItem(itemData);
+      });
+    });
+
+    /* Bar toggle */
+    var barToggle = document.getElementById('pack-bar-toggle');
+    if (barToggle) {
+      barToggle.addEventListener('click', function () {
+        var drawer = document.getElementById('pack-drawer');
+        if (drawer && drawer.classList.contains('is-open')) {
+          closeDrawer();
+        } else {
+          openDrawer();
+        }
+      });
+    }
+
+    /* Bar CTA */
+    var barCta = document.getElementById('pack-bar-cta');
+    if (barCta) barCta.addEventListener('click', goToContact);
+
+    /* Drawer close */
+    var drawerClose = document.getElementById('pack-drawer-close');
+    if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+
+    /* Drawer overlay */
+    var overlay = document.getElementById('pack-drawer-overlay');
+    if (overlay) overlay.addEventListener('click', closeDrawer);
+
+    /* Drawer CTA */
+    var drawerCta = document.getElementById('pack-drawer-cta');
+    if (drawerCta) drawerCta.addEventListener('click', goToContact);
+
+    /* Keyboard: Escape closes drawer */
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        var drawer = document.getElementById('pack-drawer');
+        if (drawer && drawer.classList.contains('is-open')) closeDrawer();
+      }
+    });
+
+    /* Initial render from sessionStorage */
+    var pack = loadPack();
+    updateAll(pack);
+  }
+
+  initPackBuilder();
+}());
+
 /* --- Catalog Tabs (activo solo si hay .catalog-tab en la pagina) --- */
 (function () {
   var tabs = document.querySelectorAll('.catalog-tab');

@@ -142,6 +142,17 @@
           <button type="submit" class="btn btn--filled btn-arrow">Enviar consulta</button>
         </form>
 
+        <!-- Success Popup -->
+        <div id="contact-success-popup" role="dialog" aria-modal="true" aria-labelledby="popup-title" style="display:none;position:fixed;inset:0;z-index:9000;display:none;align-items:center;justify-content:center;">
+          <div style="position:absolute;inset:0;background:rgba(26,26,26,0.7);" id="popup-backdrop"></div>
+          <div style="position:relative;z-index:1;background:var(--color-bg);padding:2.5rem 2rem;max-width:420px;width:90%;text-align:center;border-top:3px solid var(--color-accent);">
+            <div style="font-size:2.5rem;margin-bottom:1rem;">🌿</div>
+            <h2 id="popup-title" style="font-family:var(--font-display);font-size:1.5rem;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.75rem;">Solicitud enviada</h2>
+            <p style="font-family:var(--font-mono);font-size:0.875rem;color:var(--color-text-light);line-height:1.7;margin-bottom:1.5rem;">En breve te confirmamos tu experiencia. Nuestro equipo revisará tu solicitud y se pondrá en contacto contigo en menos de 24 horas.</p>
+            <button id="popup-close" style="font-family:var(--font-mono);font-size:0.8125rem;letter-spacing:0.04em;padding:0.875rem 2rem;background:var(--color-text);color:var(--color-bg);border:none;cursor:pointer;width:100%;">Cerrar</button>
+          </div>
+        </div>
+
         <div class="contact-details">
           <p class="contact-details-title">Contacto directo</p>
           <p class="contact-details-item">Email: <a href="mailto:info@ibizaday.com">info@ibizaday.com</a></p>
@@ -219,6 +230,77 @@
     <div class="footer-giant-logo" aria-hidden="true">IBIZADAY</div>
   </footer>
 
+  <!-- Contact form submit → success popup + pack clear -->
+  <script>
+    (function () {
+      var popup = document.getElementById('contact-success-popup');
+      var closeBtn = document.getElementById('popup-close');
+      var backdrop = document.getElementById('popup-backdrop');
+      var form = document.querySelector('.contact-form');
+
+      function showPopup() {
+        popup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+      }
+
+      function hidePopup() {
+        popup.style.display = 'none';
+        document.body.style.overflow = '';
+        try { sessionStorage.removeItem('ibizaday_pack'); } catch(e) {}
+      }
+
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          showPopup();
+        });
+      }
+
+      if (closeBtn) closeBtn.addEventListener('click', hidePopup);
+      if (backdrop) backdrop.addEventListener('click', hidePopup);
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && popup && popup.style.display === 'flex') hidePopup();
+      });
+    }());
+  </script>
+
+  <!-- Pack Builder: pre-fill message from sessionStorage if pack data exists -->
+  <script>
+    (function () {
+      try {
+        var raw = sessionStorage.getItem('ibizaday_pack');
+        if (!raw) return;
+        var pack = JSON.parse(raw);
+        if (!pack || !pack.items || !pack.items.length) return;
+
+        var textarea = document.getElementById('contact-message');
+        if (!textarea || textarea.value.trim()) return;
+
+        var lines = ['Hola, me interesa solicitar el siguiente pack personalizado:\n'];
+        var total = 0;
+        pack.items.forEach(function (item) {
+          lines.push('• ' + item.name + ' — ' + item.priceLabel);
+          total += item.price;
+        });
+        lines.push('\nTotal estimado: ' + total.toLocaleString('es-ES') + ' €');
+        lines.push('\nPor favor, contactadme para confirmar disponibilidad y precio final.');
+
+        textarea.value = lines.join('\n');
+
+        /* Also pre-select "Experiencia personalizada" in the type selector */
+        var typeSelect = document.getElementById('contact-type');
+        if (typeSelect) typeSelect.value = 'custom';
+
+        /* Show a subtle notice */
+        var notice = document.createElement('p');
+        notice.style.cssText = 'font-family:var(--font-mono);font-size:0.75rem;color:var(--color-accent);margin-top:0.5rem;';
+        notice.textContent = '✓ Pack importado desde el catalogo. Puedes editar el mensaje antes de enviar.';
+        textarea.parentNode.appendChild(notice);
+      } catch (e) { /* silently ignore */ }
+    }());
+  </script>
   <!-- FIX: JS extraido a main.js — antes era inline duplicado con bug en aria-label -->
   <script src="main.js" defer></script>
 </body>
