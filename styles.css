@@ -573,7 +573,7 @@ button {
 }
 
 .experience-card-price {
-  font-family: var(--font-body);
+  font-family: var(--font-display);
   font-size: 0.9375rem;
   color: var(--color-accent);
   letter-spacing: 0.02em;
@@ -1012,7 +1012,7 @@ button {
 }
 
 .package-price {
-  font-family: var(--font-body);
+  font-family: var(--font-display);
   font-size: 1.25rem;
   color: var(--color-accent);
   letter-spacing: 0.05em;
@@ -1692,7 +1692,7 @@ button {
 }
 
 .space-card-price {
-  font-family: var(--font-body);
+  font-family: var(--font-display);
   font-size: 1.25rem;
   color: var(--color-text);
   letter-spacing: 0.03em;
@@ -1766,7 +1766,7 @@ button {
 }
 
 .service-card-price {
-  font-family: var(--font-body);
+  font-family: var(--font-display);
   font-size: 1.0625rem;
   color: var(--color-accent);
   letter-spacing: 0.03em;
@@ -1827,7 +1827,7 @@ button {
 }
 
 .amenity-card-price {
-  font-family: var(--font-body);
+  font-family: var(--font-display);
   font-size: 1rem;
   color: var(--color-accent);
   letter-spacing: 0.03em;
@@ -1891,7 +1891,7 @@ button {
 }
 
 .pack-card-price {
-  font-family: var(--font-body);
+  font-family: var(--font-display);
   font-size: 1.25rem;
   color: var(--color-text);
   letter-spacing: 0.03em;
